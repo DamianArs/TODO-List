@@ -1,0 +1,21 @@
+
+<app-add-task></app-add-task>
+<div class="todo">
+  <ng-container *ngIf="tasks.length===0; else This">
+    <h2 [ngStyle]="{color: getColor()}">Brak zadań do wykonania!!!</h2>
+  </ng-container>
+  <ng-template #This>
+
+    <h2 [ngStyle]="{color: getColor()}">Zadania do wykonania: {{tasks.length}}</h2>
+  </ng-template>
+  <ul>
+    <li  appDate [date]="task.created" *ngFor="let task of tasks | sortPipe; let i = index; let odd = odd"
+      [ngClass]="{'oddClass':odd, 'lastEl': tasks.length==1}">{{i+1}}. {{task?.name|letter: " !"}}
+      <button (click)="made(task)">Zrobione</button>
+      <button (click)="remove(task)">Usuń</button>
+      <button (click)="save(task)">Dodaj do bazy</button>
+    </li>
+
+  </ul>
+</div>
+

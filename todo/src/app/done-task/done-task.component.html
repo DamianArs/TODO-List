@@ -1,0 +1,8 @@
+<div class="todo">
+  <h2>Zadania wykonane</h2>
+  <ul>
+    <li appChecked  *ngFor="let task of taskDone; let i = index; let odd = odd" [ngClass]="{'oddClass':odd}">{{i+1}}. {{task.name}}
+      <button (click)="remove(task)">Usuń z bazy</button>
+    </li>
+  </ul>
+</div>
